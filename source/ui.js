@@ -697,16 +697,16 @@ if (typeof jQuery !== 'undefined') {
                     });
                 },
 
-                resetCanvas: function() {
-                    this.canvasContext.fillStyle = 'black';
-                    // set alpha to opaque
-                    this.canvasContext.fillRect(0, 0, 256, 240);
+                // resetCanvas: function() {
+                //     this.canvasContext.fillStyle = 'black';
+                //     // set alpha to opaque
+                //     this.canvasContext.fillRect(0, 0, 256, 240);
 
-                    // Set alpha
-                    for (var i = 3; i < this.canvasImageData.data.length - 3; i += 4) {
-                        this.canvasImageData.data[i] = 0xFF;
-                    }
-                },
+                //     // Set alpha
+                //     for (var i = 3; i < this.canvasImageData.data.length - 3; i += 4) {
+                //         this.canvasImageData.data[i] = 0xFF;
+                //     }
+                // },
 
                 /*
                  *
