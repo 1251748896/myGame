@@ -1,0 +1,15 @@
+.function button,
+.action button {
+    color: #000;
+}
+
+.function button {
+    height: 32px;
+    width: auto;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

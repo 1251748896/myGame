@@ -1,4 +1,5 @@
-<html>  
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -16,22 +17,22 @@
     <meta name="description" content="任天堂FC/NES原版ROM在线玩，可以近乎完美的还原fc卡带游戏的视频和声音。" />
     <link href="css/jsnes.css" rel="stylesheet" type="text/css" />
     <link rel="shortcut icon" href="favicon.ico">
-    <style>
-        .function button, .action button{
-            color:#000;
-        }
-        .function button{
-            height:32px;
-            width:auto;
-        }
-    </style>
+
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <script src="source/my_socket.js"></script>
+
 </head>
 <!-- /**
  * fc在线玩
  * Gitee 开源地址：https://gitee.com/feiyu22/jsnes
  * 转载或使用时，还请保留以上信息，谢谢！
+ * 说明：http://liflag.cn/post/59
  */ -->
+
 <body>
+    <input placeholder="请输入1或2">
+    <button onclick="linkSocket()">链接</button>
+
     <div class="main">
         <div class="panel">
             <div class="controller-area">
@@ -44,8 +45,6 @@
                         <button role="BUTTON_LEFT" class="left joydirection" id="joystick_btn_left">left</button>
                     </div>
                 </div>
-                <!-- <div class="joy">I</div>
-                <div><a href="http://liflag.cn/post/59" target="_blank" class="readme">按键说明</a></div> -->
             </div>
             <div class="function-area">
                 <div class="screen">
@@ -64,7 +63,6 @@
                     </div>
                 </div>
             </div>
-            <!-- <div class="sign">FAMILY <br> COMPUTER</div> -->
         </div>
     </div>
 </body>
@@ -79,7 +77,7 @@
 <script src="source/ppu.js" type="text/javascript" charset="utf-8"></script>
 <script src="source/rom.js" type="text/javascript" charset="utf-8"></script>
 <script src="source/ui.js" type="text/javascript" charset="utf-8"></script>
-<script src="lib/debug.mini.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="lib/debug.mini.js" type="text/javascript" charset="utf-8"></script> -->
 <script src="lib/nipplejs.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/joystick.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript" charset="utf-8">
@@ -178,36 +176,37 @@
 <![endif]-->
 <script>
     function touchDwon(evt) {
-    nes.keyboard.keyDown({
-        keyCode: evt.keyCode
-    });
-};
+        nes.keyboard.keyDown({
+            keyCode: evt.keyCode
+        });
+    };
 
-function touchUp(evt) {
-    nes.keyboard.keyUp({
-        keyCode: evt.keyCode
-    });
-};
+    function touchUp(evt) {
+        nes.keyboard.keyUp({
+            keyCode: evt.keyCode
+        });
+    };
 
-function select(val) {
-    if (val.substring(0, 1) == "#") {
-        return document.querySelector(val);
-    } else {
-        return document.getElementById(val);
+    function select(val) {
+        if (val.substring(0, 1) == "#") {
+            return document.querySelector(val);
+        } else {
+            return document.getElementById(val);
+        }
     }
-}
 
-var joystick = new Joystick({
-    el: select("controls-rocker"),
-    mode: 'static',
-    color: "#808080",
-    size: 150,
-    isFourBtn: false,
-    keyCodes: [87, 83, 65, 68],
-    btn_down_fn: touchDwon,
-    btn_up_fn: touchUp,
-    relative: true,
-});
-joystick.init();
+    var joystick = new Joystick({
+        el: select("controls-rocker"),
+        mode: 'static',
+        color: "#808080",
+        size: 150,
+        isFourBtn: false,
+        keyCodes: [87, 83, 65, 68],
+        btn_down_fn: touchDwon,
+        btn_up_fn: touchUp,
+        relative: true,
+    });
+    joystick.init();
 </script>
+
 </html>
