@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="./index.css">
-    <script src="source/my_socket.js"></script>
+    <script src="source/socket_config.js"></script>
 
 </head>
 <!-- /**
@@ -30,8 +30,12 @@
  */ -->
 
 <body>
-    <input placeholder="请输入1或2">
-    <button onclick="linkSocket()">链接</button>
+    <input id="handler" value="1" placeholder="请输入1或2">
+    <button id="sendbtn">链接手柄</button>
+
+    <div id="result"></div>
+    <input type="text" id="m" value="10.0.1.16" placeholder="请输入ip地址">
+    <button onclick="initSocket()">初始化通信服务</button>
 
     <div class="main">
         <div class="panel">
@@ -66,6 +70,7 @@
         </div>
     </div>
 </body>
+
 <script src="lib/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="lib/dynamicaudio-min.js" type="text/javascript" charset="utf-8"></script>
 <script src="source/nes.js" type="text/javascript" charset="utf-8"></script>
@@ -208,5 +213,6 @@
     });
     joystick.init();
 </script>
+
 
 </html>
